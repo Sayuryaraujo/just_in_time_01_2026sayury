@@ -127,52 +127,44 @@ As movimentações permitem consultar o histórico das operações registradas n
 
 
 just_in_time_01_2026/
-│
-├── api/
-│   ├── src/
-│   │   ├── controllers/
-│   │   │   ├── movimentacao.controller.js
-│   │   │   ├── pedido.controller.js
-│   │   │   ├── produto.controller.js
-│   │   │   ├── producao.controller.js
-│   │   │   └── usuario.controller.js
-│   │   │
-│   │   ├── routes/
-│   │   │   ├── movimentacao.routes.js
-│   │   │   ├── pedido.routes.js
-│   │   │   ├── produto.routes.js
-│   │   │   ├── producao.routes.js
-│   │   │   └── usuario.routes.js
-│   │   │
-│   │   └── ...
-│   │
-│   ├── prisma/
-│   │   └── schema.prisma
-│   │
-│   ├── prisma.config.ts
-│   ├── server.js
-│   ├── package.json
-│   └── package-lock.json
-│
-├── web/
-│   ├── index.html
-│   ├── global.css
-│   ├── index.js
-│   │
-│   ├── login.html
-│   ├── root.css
-│   ├── login.js
-│   │
-│   ├── producao.html
-│   ├── producao.js
-│   │
-│   ├── produto.html
-│   ├── produto.js
-│   │
-└── README.md
+ API: 
+     SRC: 
+        controllers:
+                movimentacao.controller.js
+                pedido.controller.js
+                 produto.controller.js
+                 producao.controller.js
+                 usuario.controller.js
+
+         routes:
+              movimentacao.routes.js
+              pedido.routes.js
+              produto.routes.js
+              producao.routes.js
+              usuario.routes.js
+
+         prisma:
+                schema.prisma
+                prisma.config.ts
+                server.js
+                package.json
+                package-lock.json
+
+ web:
+       index.html
+       global.css
+       index.js
+       login.html
+       root.css
+       login.js
+       producao.html
+       producao.js
+       produto.html
+       produto.js
+ README.md
 
 
-> A estrutura apresenta os principais arquivos e módulos utilizados no projeto.
+*A estrutura apresenta os principais arquivos e módulos utilizados no projeto.
 
 
 # Banco de dados
