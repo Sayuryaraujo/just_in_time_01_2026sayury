@@ -125,7 +125,7 @@ As movimentações permitem consultar o histórico das operações registradas n
 
 # Estrutura do projeto
 
-```text
+
 just_in_time_01_2026/
 │
 ├── api/
@@ -244,38 +244,15 @@ CREATE DATABASE sistema_estoque;
 
 Depois execute o script SQL do projeto para criar as tabelas necessárias.
 
-
-# Configuração do Prisma
-
-O projeto utiliza o **Prisma ORM** para realizar a comunicação entre o back-end e o banco de dados.
-
-A conexão utiliza o adaptador:
-
-const { PrismaClient } = require('@prisma/client');
-const { PrismaMariaDb } = require('@prisma/adapter-mariadb');
-
-A configuração da conexão utiliza:
-
-const adapter = new PrismaMariaDb({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'sistema_estoque'
-});
-
-const prisma = new PrismaClient({ adapter });
-
 # Executando o back-end
 
 Entre na pasta da API:
 
 cd api
 
-
 Execute o servidor:
 
 node server.js
-
 
 O servidor será executado localmente em:
 
@@ -292,7 +269,6 @@ web/
 Para executar a aplicação, abra o arquivo:
 
 web/index.html
-
 
 no navegador.
 
@@ -313,28 +289,23 @@ DELETE
 
 As informações são enviadas e recebidas no formato **JSON**.
 
-
 # Rotas da API
 
 ## Usuários
 
 Rotas relacionadas ao cadastro e autenticação dos usuários.
 
-
 POST /usuario/cadastrar
 POST /usuario/login
-
 
 ## Produtos
 
 Rotas relacionadas ao gerenciamento dos produtos.
 
-
 GET /produto/listar
 POST /produto/cadastrar
 PUT /produto/editar/:id
 DELETE /produto/excluir/:id
-
 
 ## Pedidos
 
@@ -363,29 +334,8 @@ POST /producao/cadastrar
 
 Rotas relacionadas ao registro e consulta das movimentações.
 
-
 GET /movimentacao/listar
 POST /movimentacao/cadastrar
-
-
-> Os nomes e caminhos das rotas devem seguir a configuração presente nos arquivos `routes` do projeto.
-
-
-# Validações
-
-O sistema possui validações para evitar o cadastro de informações incorretas e manter a integridade dos dados.
-
-Entre as validações estão:
-
-* Verificação dos dados informados no cadastro.
-* Validação das credenciais durante o login.
-* Verificação da existência de usuários.
-* Verificação da existência de produtos.
-* Validação das informações dos pedidos.
-* Validação dos itens relacionados aos pedidos.
-* Validação das informações de produção.
-* Validação das informações das movimentações.
-
 
 # Testes
 
@@ -402,9 +352,7 @@ Cada caso de teste possui informações como:
 * Resultado esperado.
 * Resultado obtido.
 * Status de aprovação.
-
 Os testes têm como objetivo verificar se as funcionalidades implementadas estão de acordo com os requisitos definidos.
-
 
 # Documentação
 
@@ -417,26 +365,11 @@ O projeto possui documentos relacionados à análise, desenvolvimento e validaç
 * Script SQL do banco de dados.
 * Requisitos de infraestrutura.
 * Documentação das interfaces do sistema.
-
 Os requisitos funcionais são relacionados aos respectivos casos de uso e casos de teste, permitindo verificar a implementação das funcionalidades previstas no projeto.
-
 
 # Finalidade acadêmica
 
-O **Sistema Just in Time** foi desenvolvido como projeto acadêmico do **SENAI 2026**, com foco no desenvolvimento Full Stack e na aplicação prática de conceitos de:
-
-* Desenvolvimento web.
-* HTML, CSS e JavaScript.
-* Node.js.
-* Express.js.
-* APIs REST.
-* Prisma ORM.
-* MySQL.
-* Modelagem de banco de dados.
-* Requisitos de software.
-* Casos de uso.
-* Testes de software.
-
+O **Sistema Just in Time** foi desenvolvido como projeto acadêmico do **SENAI 2026**, com foco no desenvolvimento Full Stack e na aplicação prática de conceitos de: Desenvolvimento web. HTML, CSS e JavaScript. Node.js. Express.js. APIs REST. Prisma ORM. MySQL. Modelagem de banco de dados. Requisitos de software. Casos de uso. Testes de software.
 
 # Sistema Just in Time
 
