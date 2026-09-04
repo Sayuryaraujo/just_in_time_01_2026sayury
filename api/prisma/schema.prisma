@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model usuario {
+  id            Int            @id @default(autoincrement())
+  nome          String         @db.VarChar(255)
+  email         String         @unique(map: "email") @db.VarChar(255)
+  senha         String         @db.VarChar(255)
+  movimentacoes movimentacao[]
+  producoes     producao[]
+}
+
+model produto {
+  id            Int            @id @default(autoincrement())
+  nome          String         @db.VarChar(255)
+  descricao     String         @db.VarChar(255)
+  custo         Float          @db.Float
+  estoque       Int            @default(0)
+  estoqueMinimo Int            @default(0)
+  itens         item[]
+  movimentacoes movimentacao[]
+  producoes     producao[]
+}
+
+model pedido {
+  id      Int      @id @default(autoincrement())
+  cliente String   @db.VarChar(255)
+  data    DateTime @default(now()) @db.DateTime(0)
+  itens   item[]
+}
+
+model item {
+  id         Int     @id @default(autoincrement())
+  pedidoId   Int
+  produtoId  Int
+  quantidade Int
+  pedido     pedido  @relation(fields: [pedidoId], references: [id], onDelete: Cascade, map: "fk_item_pedido")
+  produto    produto @relation(fields: [produtoId], references: [id], onDelete: Cascade, map: "fk_item_produto")
+
+  @@index([pedidoId], map: "fk_item_pedido")
+  @@index([produtoId], map: "fk_item_produto")
+}
+
+model producao {
+  id         Int      @id @default(autoincrement())
+  produtoId  Int
+  usuarioId  Int
+  quantidade Int
+  data       DateTime @default(now()) @db.DateTime(0)
+  produto    produto  @relation(fields: [produtoId], references: [id], onDelete: Cascade, map: "fk_producao_produto")
+  usuario    usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade, map: "fk_producao_usuario")
+
+  @@index([produtoId], map: "fk_producao_produto")
+  @@index([usuarioId], map: "fk_producao_usuario")
+}
+
+model movimentacao {
+  id         Int              @id @default(autoincrement())
+  produtoId  Int
+  usuarioId  Int
+  tipo       TipoMovimentacao
+  quantidade Int
+  data       DateTime         @default(now()) @db.DateTime(0)
+  produto    produto          @relation(fields: [produtoId], references: [id], onDelete: Cascade, map: "fk_movimentacao_produto")
+  usuario    usuario          @relation(fields: [usuarioId], references: [id], onDelete: Cascade, map: "fk_movimentacao_usuario")
+
+  @@index([produtoId], map: "fk_movimentacao_produto")
+  @@index([usuarioId], map: "fk_movimentacao_usuario")
+}
+
+enum TipoMovimentacao {
+  ENTRADA
+  SAIDA
+}
+

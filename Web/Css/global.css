@@ -1,0 +1,333 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #FBF4F5;
+    color: #3D2928;
+}
+
+header {
+    height: 70px;
+    background: #5C3A38;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#btnSair {
+    border: none;
+    background: #E8BFC4;
+    color: #5C3A38;
+    padding: 9px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+main {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.inicio {
+    text-align: center;
+}
+
+.inicio h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #5C3A38;
+}
+
+.inicio p {
+    color: #806A69;
+}
+
+.opcoes {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.card {
+    width: 300px;
+    padding: 30px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #3D2928;
+    box-shadow: 0 2px 8px rgba(92, 58, 56, 0.10);
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card h3 {
+    color: #5C3A38;
+    margin-bottom: 12px;
+}
+
+@media (max-width: 700px) {
+    .opcoes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    header {
+        padding: 0 20px;
+    }
+}
+
+.login {
+    width: 100%;
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 35px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(92, 58, 56, 0.10);
+    text-align: center;
+}
+
+.login h1 {
+    color: #5C3A38;
+    margin-bottom: 10px;
+}
+
+.login h2 {
+    margin-bottom: 25px;
+    color: #806A69;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login input {
+    padding: 12px;
+    border: 1px solid #E6D4D5;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.login button {
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #5C3A38;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login button:hover {
+    background: #8B5E5A;
+}
+
+#mensagem {
+    color: #B84A4A;
+    min-height: 20px;
+}
+
+.topo-pagina {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.topo-pagina h2 {
+    color: #5C3A38;
+    margin-bottom: 8px;
+}
+
+.voltar {
+    text-decoration: none;
+    color: #8B5E5A;
+    font-weight: bold;
+}
+
+.acoes {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.acoes input {
+    flex: 1;
+    padding: 11px;
+    border: 1px solid #E6D4D5;
+    border-radius: 6px;
+}
+
+.acoes button,
+.botoes-modal button {
+    border: none;
+    border-radius: 6px;
+    padding: 11px 18px;
+    background: #5C3A38;
+    color: white;
+    cursor: pointer;
+}
+
+.tabela-container {
+    overflow-x: auto;
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #F0E1E3;
+}
+
+th {
+    background: #F3DDE0;
+    color: #5C3A38;
+}
+
+td button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.editar {
+    color: #8B5E5A;
+}
+
+.excluir {
+    color: #B84A4A;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(92, 58, 56, 0.40);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-conteudo {
+    width: 100%;
+    max-width: 450px;
+    background: #FFFFFF;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.modal-conteudo h2 {
+    color: #5C3A38;
+    margin-bottom: 20px;
+}
+
+.modal-conteudo form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-conteudo input,
+.modal-conteudo textarea {
+    padding: 11px;
+    border: 1px solid #E6D4D5;
+    border-radius: 6px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.modal-conteudo textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.botoes-modal {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.botoes-modal button:first-child {
+    background: #E8DADC;
+    color: #5C3A38;
+}
+
+#mensagem {
+    margin-top: 15px;
+}
+
+.form-producao {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 30px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(92, 58, 56, 0.10);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-producao label {
+    color: #5C3A38;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.form-producao input,
+.form-producao select {
+    padding: 11px;
+    border: 1px solid #E6D4D5;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.form-producao button {
+    margin-top: 10px;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #5C3A38;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}

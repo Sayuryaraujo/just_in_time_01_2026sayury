@@ -1,0 +1,85 @@
+Banco de Dados: 
+
+CREATE DATABASE IF NOT EXISTS sistema_estoque;
+USE sistema_estoque;
+
+CREATE TABLE usuario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE produto (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
+    custo FLOAT NOT NULL,
+    estoque INT NOT NULL DEFAULT 0,
+    estoqueMinimo INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE pedido (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente VARCHAR(255) NOT NULL,
+    data DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE item (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pedidoId INT NOT NULL,
+    produtoId INT NOT NULL,
+    quantidade INT NOT NULL,
+
+    CONSTRAINT fk_item_pedido
+        FOREIGN KEY (pedidoId)
+        REFERENCES pedido(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    CONSTRAINT fk_item_produto
+        FOREIGN KEY (produtoId)
+        REFERENCES produto(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+CREATE TABLE producao (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    produtoId INT NOT NULL,
+    usuarioId INT NOT NULL,
+    quantidade INT NOT NULL,
+    data DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_producao_produto
+        FOREIGN KEY (produtoId)
+        REFERENCES produto(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    CONSTRAINT fk_producao_usuario
+        FOREIGN KEY (usuarioId)
+        REFERENCES usuario(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+CREATE TABLE movimentacao (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    produtoId INT NOT NULL,
+    usuarioId INT NOT NULL,
+    tipo ENUM('ENTRADA', 'SAIDA') NOT NULL,
+    quantidade INT NOT NULL,
+    data DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_movimentacao_produto
+        FOREIGN KEY (produtoId)
+        REFERENCES produto(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    CONSTRAINT fk_movimentacao_usuario
+        FOREIGN KEY (usuarioId)
+        REFERENCES usuario(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
